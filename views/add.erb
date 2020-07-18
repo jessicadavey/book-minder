@@ -1,0 +1,35 @@
+<header>
+  <h1>Add a Book</h1>
+</header>
+<div class="form">
+  <form action="" method="post">
+    <div class="form-element">
+      <label for="title">Title</label>
+      <br>
+      <input type="text" id="title" name="title" value="<%= params["title"] %>" required>
+    </div>
+    <div class="form-element">
+      <label for="author">Author</label>
+      <br>
+      <input type="text" id="author" name="author" value="<%= params["author"] %>" required>
+    </div>
+    <div class="form-element">
+      <label for="date_started">Date Started</label>
+      <br>
+      <input type="date" id="date_started" name="date_started" value="<%= params["date_started"] %>">
+      <br>
+      <label for="not_started" class="small">I haven't started this book yet</label>
+      <input type="checkbox" id="not_started" name="not_started">
+    </div>
+    <div class="form-element">
+      <label for="date_completed">Date Completed</label>
+      <br>
+      <input type="date" id="date_completed" name="date_completed" value="<%= params["date_completed"] %>">
+      <br>
+      <label for="not_completed" class="small">I haven't completed this book yet</label>
+      <input type="checkbox" id="not_completed" name="not_completed">
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+  <a href="/"><button>Cancel</button></a>
+</div>

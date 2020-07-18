@@ -1,0 +1,123 @@
+<header>
+  <h1>Book Minder</h1>
+  <a href="/add"><button>Add A Book</button></a>
+</header>
+
+<main>
+  <section class="section">
+    <h2>Currently Reading:</h2>
+    <% if @currently_reading.empty? %>
+      <p class="italic">
+        You aren't currently reading any books.  
+        <a href="/add"><button>Add A Book</button></a>
+      </p>
+    <% else %>
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Date Started</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @currently_reading.each do |book| %>
+          <tr>
+              <td><%= book[:title] %></td>
+              <td><%= book[:author] %></td>
+              <td><%= format_date(book[:date_started]) %></td>
+              <td>
+                <form action="/finish/<%= book[:id] %>" method="post">
+                  <button>Finish</button>
+                </form>
+              </td>
+              <td><a href="/edit/<%= book[:id] %>"><button>Edit</button></a></td>
+              <td>
+                <form action="/delete/<%= book[:id] %>" method="post">
+                  <button>Delete</button>
+                </form>
+              </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+  </section>
+
+  <section class="section">
+    <h2>Books I've Read:</h2>
+    <% if @books_read.empty? %>
+      <p class="italic">
+        You haven't finished any books yet. 
+        <a href="/add"><button>Add A Book</button></a>
+      </p>
+    <% else %>
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Date Started</th>
+            <th>Date Completed</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @books_read.each do |book| %>
+            <tr>
+              <td><%= book[:title] %></td>
+              <td><%= book[:author] %></td>
+              <td><%= format_date(book[:date_started]) %></td>
+              <td><%= format_date(book[:date_completed]) %></td>
+              <td><a href="/edit/<%= book[:id] %>"><button>Edit</button></a></td>
+              <td>
+                <form action="/delete/<%= book[:id] %>" method="post">
+                  <button>Delete</button>
+                </form>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+  </section>
+
+  <section class="section">
+    <h2>Books I Want To Read:</h2>
+    <% if @books_to_read.empty? %>
+      <p class="italic">
+        You aren't planning to read any books. 
+        <a href="/add"><button>Add A Book</button></a>
+      </p>
+    <% else %>
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @books_to_read.each do |book| %>
+            <tr>
+              <td><%= book[:title] %></td>
+              <td><%= book[:author] %></td>
+              <td>
+                <form action="/start/<%= book[:id] %>" method="post">
+                  <button>Start</button>
+                </form>
+              </td>
+              <td><a href="/edit/<%= book[:id] %>"><button>Edit</button></a></td>
+              <td>
+                <form action="/delete/<%= book[:id] %>" method="post">
+                  <button>Delete</button>
+                </form>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+  </section>
+</main>

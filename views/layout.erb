@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <title>Book Minder</title>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+    <script src="/jquery-3.5.1.js"></script>
+    <script src="/application.js"></script>
+  </head>
+  <body>
+    <% if session[:success] %>
+      <p class="success"> <%= session.delete(:success) %></p>
+    <% end %>
+    <% if !session[:error].empty? %>
+      <% session[:error].each do |error| %>
+        <p class="error"> <%= error %></p>
+      <% end %>
+      <% session[:error] = [] %>
+    <% end %>
+    <%== yield %>
+  </body>
+</html>

@@ -19,7 +19,7 @@ section h2 {
   font-weight: bold;
 }
 
-main, header {
+main, header, footer {
   max-width: 90%;
   margin: 0 auto;
 }
@@ -75,4 +75,14 @@ button:hover {
   background-color: #ff6666;
   font-weight: bold;
   padding: 5px;
+}
+
+footer {
+  font-family: sans-serif;
+  font-size: 0.9em;
+}
+
+footer a {
+  color: #C20F5D;
+  color: #1F487E;
 }
